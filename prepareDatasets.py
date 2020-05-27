@@ -17,20 +17,24 @@ if __name__ == "__main__":
     train_set = {}
     train_set["xs"] = []
     train_set["ys"] = []
+    train_set["path"] = []
     for label, type, name in train_split:
         base_dir = pics_dir + "/" + type + "/" + name
         pics = get_longest_shot(base_dir)
         for pic in pics:
+            train_set["path"].append(pic)
             train_set["xs"].append(pic_norm(pic, (96, 72)))
             train_set["ys"].append(label)
 
     dev_set = {}
     dev_set["xs"] = []
     dev_set["ys"] = []
+    dev_set["path"] = []
     for label, type, name in dev_split:
         base_dir = pics_dir + "/" + type + "/" + name
         pics = get_longest_shot(base_dir)
         for pic in pics:
+            dev_set["path"].append(pic)
             dev_set["xs"].append(pic_norm(pic, (96, 72)))
             dev_set["ys"].append(label)
 
